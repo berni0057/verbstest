@@ -1,9 +1,11 @@
+<!-- made by AI -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8" />
 <title>Verbo Inglés</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
+<link rel="icon" type="image/x-icon" href="favicon.png" />
 <style>
   body {
     font-family: 'Montserrat', sans-serif;
@@ -120,7 +122,7 @@
 <button id="startBtn">Start</button>
 
 <div id="exerciseContainer" aria-live="polite">
-  <div id="errorMessage">Error</div>
+  <div id="errorMessage">Error loading verbs list</div>
   <button id="retryBtn">Retry</button>
   <div id="exerciseContent">
     <div class="form-group">
@@ -321,6 +323,34 @@ document.getElementById("retryBtn").addEventListener("click", () => {
   window.location.reload();
 });
 </script>
+<div id="attribution">
+  <a href="https://www.flaticon.com/free-icons/england" title="england icons" target="_blank" rel="noopener noreferrer">
+    England icons created by Freepik - Flaticon
+  </a>
+</div>
+
+<style>
+  #attribution {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    color: #555;
+    position: fixed;
+    bottom: 8px;
+    right: 12px;
+    max-width: 230px;
+    text-align: right;
+    z-index: 1000;
+  }
+  #attribution a {
+    color: #555;
+    text-decoration: none;
+  }
+  #attribution a:hover {
+    text-decoration: underline;
+  }
+</style>
 
 </body>
 </html>
+
+
