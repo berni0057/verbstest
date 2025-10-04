@@ -3,48 +3,103 @@
 <head>
 <meta charset="UTF-8" />
 <title>Verbo Inglés</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
 <style>
   body {
-    font-family: Arial, sans-serif;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f5f7fa;
     margin: 40px;
     text-align: center;
+    color: #333;
   }
   h1 {
     text-align: center;
+    font-weight: 600;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
     transition: text-align 0.3s ease;
   }
   #exerciseContainer {
     display: none;
     margin-top: 20px;
     text-align: left;
+    max-width: 450px;
+    margin-left: auto;
+    margin-right: auto;
+    background: white;
+    padding: 25px 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
   }
   .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 18px;
+  }
+  label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #222;
   }
   input[type="text"] {
-    width: 300px;
-    padding: 8px;
+    width: 100%;
+    padding: 10px 14px;
     font-size: 16px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    transition: border-color 0.3s ease;
   }
-  .correct {
-    background-color: lightgreen;
-    border: 2px solid green;
+  input[type="text"]:focus {
+    outline: none;
+    border-color: #5b9bd5;
+    box-shadow: 0 0 6px #99bbff;
   }
-  .incorrect {
-    background-color: lightcoral;
-    border: 2px solid red;
+  input.correct {
+    background-color: #d4edda;
+    border-color: #28a745;
+    color: #155724;
+    font-weight: 600;
+  }
+  input.incorrect {
+    background-color: #f8d7da;
+    border-color: #dc3545;
+    color: #721c24;
+    font-weight: 600;
   }
   #message {
-    font-size: 24px;
-    margin-top: 20px;
+    font-size: 1.5rem;
+    margin-top: 25px;
+    font-weight: 600;
   }
-  #checkBtn, #nextBtn, #startBtn {
-    padding: 10px 20px;
+  #message.green {
+    color: #28a745;
+  }
+  #message.red {
+    color: #dc3545;
+  }
+  button {
+    margin-top: 20px;
+    background-color: #5b9bd5;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 12px 30px;
     font-size: 16px;
-    margin-top: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 5px 10px rgba(91,155,213,0.3);
+    transition: background-color 0.25s ease, transform 0.15s ease;
   }
-  #nextBtn {
-    display: none;
+  button:disabled {
+    background-color: #a4b8d5;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+  button:hover:not(:disabled) {
+    background-color: #4178d1;
+    transform: translateY(-2px);
+  }
+  button:active:not(:disabled) {
+    transform: translateY(1px);
   }
 </style>
 </head>
@@ -53,25 +108,25 @@
 <h1 id="pageTitle">IRREGULAR VERBS PART 1</h1>
 <button id="startBtn">Start</button>
 
-<div id="exerciseContainer">
-  <h3>INFINITIVE</h3>
+<div id="exerciseContainer" aria-live="polite">
   <div class="form-group">
-    <input type="text" id="infinitive" />
+    <label for="infinitive">INFINITIVE</label>
+    <input type="text" id="infinitive" aria-describedby="infinitiveLabel" autocomplete="off"/>
   </div>
 
-  <h3>PAST SIMPLE</h3>
   <div class="form-group">
-    <input type="text" id="pastSimple" />
+    <label for="pastSimple">PAST SIMPLE</label>
+    <input type="text" id="pastSimple" aria-describedby="pastSimpleLabel" autocomplete="off"/>
   </div>
 
-  <h3>PAST PARTICIPLE</h3>
   <div class="form-group">
-    <input type="text" id="pastParticiple" />
+    <label for="pastParticiple">PAST PARTICIPLE</label>
+    <input type="text" id="pastParticiple" aria-describedby="pastParticipleLabel" autocomplete="off"/>
   </div>
 
   <button id="checkBtn">Check</button>
   <button id="nextBtn">Next</button>
-  <div id="message"></div>
+  <div id="message" role="alert"></div>
 </div>
 
 <script>
@@ -79,14 +134,14 @@ let verbs = [];
 let currentVerb = null;
 let lockedForm = "";
 
-// Cargar el JSON externo
 async function loadVerbs() {
   try {
     const response = await fetch('verbs.json');
+    if (!response.ok) throw new Error('HTTP error ' + response.status);
     verbs = await response.json();
   } catch (error) {
     console.error('Error al cargar verbs.json:', error);
-    alert('No se pudo cargar la lista de verbos.');
+    alert('No se pudo cargar la lista de verbos: ' + error.message);
   }
 }
 
@@ -99,18 +154,18 @@ function pickForm(verb) {
   const forms = ["infinitive", "pastSimple", "pastParticiple"];
   let form = forms[Math.floor(Math.random() * forms.length)];
   if (verb.infinitive === "can" && form === "pastParticiple") {
-    let altForms = forms.filter(f => f !== "pastParticiple");
+    const altForms = forms.filter(f => f !== "pastParticiple");
     form = altForms[Math.floor(Math.random() * altForms.length)];
   }
   if (form === "pastParticiple" && verb.pastParticiple === null) {
-    let altForms = forms.filter(f => f !== "pastParticiple");
+    const altForms = forms.filter(f => f !== "pastParticiple");
     form = altForms[Math.floor(Math.random() * altForms.length)];
   }
   return form;
 }
 
 function loadVerb() {
-  document.getElementById("message").innerHTML = "";
+  document.getElementById("message").textContent = "";
   ['infinitive', 'pastSimple', 'pastParticiple'].forEach(id => {
     const input = document.getElementById(id);
     input.value = "";
@@ -121,19 +176,20 @@ function loadVerb() {
   document.getElementById("checkBtn").disabled = false;
 
   currentVerb = getRandomVerb();
-  let form = pickForm(currentVerb);
+  const form = pickForm(currentVerb);
 
   if (form === "infinitive") {
-    document.getElementById("infinitive").value = currentVerb.infinitive;
-    document.getElementById("infinitive").disabled = true;
+    const input = document.getElementById("infinitive");
+    input.value = currentVerb.infinitive;
+    input.disabled = true;
   } else if (form === "pastSimple") {
-    let val = Array.isArray(currentVerb.pastSimple) ? currentVerb.pastSimple[0] : currentVerb.pastSimple;
-    document.getElementById("pastSimple").value = val;
-    document.getElementById("pastSimple").disabled = true;
+    const input = document.getElementById("pastSimple");
+    input.value = Array.isArray(currentVerb.pastSimple) ? currentVerb.pastSimple[0] : currentVerb.pastSimple;
+    input.disabled = true;
   } else if (form === "pastParticiple") {
-    let val = Array.isArray(currentVerb.pastParticiple) ? currentVerb.pastParticiple[0] : currentVerb.pastParticiple;
-    document.getElementById("pastParticiple").value = val;
-    document.getElementById("pastParticiple").disabled = true;
+    const input = document.getElementById("pastParticiple");
+    input.value = Array.isArray(currentVerb.pastParticiple) ? currentVerb.pastParticiple[0] : currentVerb.pastParticiple;
+    input.disabled = true;
   }
 
   lockedForm = form;
@@ -147,10 +203,8 @@ function isAnswerCorrect(userAnswer, validAnswers) {
   if (userParts.length === 1) {
     return validParts.includes(userParts[0]);
   }
-  for (let p of userParts) {
-    if (!validParts.includes(p)) {
-      return false;
-    }
+  for (const p of userParts) {
+    if (!validParts.includes(p)) return false;
   }
   return true;
 }
@@ -164,63 +218,64 @@ document.getElementById("checkBtn").addEventListener("click", () => {
   const userPastP = document.getElementById("pastParticiple").value.trim();
 
   if (lockedForm !== "infinitive") {
+    const input = document.getElementById("infinitive");
     if (isAnswerCorrect(userInf, currentVerb.infinitive)) {
-      let infInput = document.getElementById("infinitive");
-      infInput.className = "correct";
-      infInput.disabled = true;
+      input.className = "correct";
+      input.disabled = true;
       correctCount++;
     } else {
-      let infInput = document.getElementById("infinitive");
-      infInput.className = "incorrect";
-      infInput.disabled = false;
+      input.className = "incorrect";
+      input.disabled = false;
     }
   } else {
-    document.getElementById("infinitive").className = "correct";
+    const input = document.getElementById("infinitive");
+    input.className = "correct";
     correctCount++;
   }
 
   const validPastS = Array.isArray(currentVerb.pastSimple) ? currentVerb.pastSimple : [currentVerb.pastSimple];
   if (lockedForm !== "pastSimple") {
+    const input = document.getElementById("pastSimple");
     if (isAnswerCorrect(userPastS, validPastS)) {
-      let psInput = document.getElementById("pastSimple");
-      psInput.className = "correct";
-      psInput.disabled = true;
+      input.className = "correct";
+      input.disabled = true;
       correctCount++;
     } else {
-      let psInput = document.getElementById("pastSimple");
-      psInput.className = "incorrect";
-      psInput.disabled = false;
+      input.className = "incorrect";
+      input.disabled = false;
     }
   } else {
-    document.getElementById("pastSimple").className = "correct";
+    const input = document.getElementById("pastSimple");
+    input.className = "correct";
     correctCount++;
   }
 
   if (currentVerb.pastParticiple !== null && lockedForm !== "pastParticiple") {
     const validPastP = Array.isArray(currentVerb.pastParticiple) ? currentVerb.pastParticiple : [currentVerb.pastParticiple];
+    const input = document.getElementById("pastParticiple");
     if (isAnswerCorrect(userPastP, validPastP)) {
-      let ppInput = document.getElementById("pastParticiple");
-      ppInput.className = "correct";
-      ppInput.disabled = true;
+      input.className = "correct";
+      input.disabled = true;
       correctCount++;
     } else {
-      let ppInput = document.getElementById("pastParticiple");
-      ppInput.className = "incorrect";
-      ppInput.disabled = false;
+      input.className = "incorrect";
+      input.disabled = false;
     }
   } else {
-    document.getElementById("pastParticiple").className = "correct";
+    const input = document.getElementById("pastParticiple");
+    input.className = "correct";
     correctCount++;
   }
 
+  const message = document.getElementById("message");
   if (correctCount === totalFields) {
-    document.getElementById("message").textContent = "Good job!";
-    document.getElementById("message").style.color = "green";
+    message.textContent = "Good job!";
+    message.className = "green";
     document.getElementById("nextBtn").style.display = "inline";
     document.getElementById("checkBtn").disabled = true;
   } else {
-    document.getElementById("message").textContent = "Wrong answer";
-    document.getElementById("message").style.color = "red";
+    message.textContent = "Wrong answer";
+    message.className = "red";
     document.getElementById("nextBtn").style.display = "none";
     document.getElementById("checkBtn").disabled = false;
   }
