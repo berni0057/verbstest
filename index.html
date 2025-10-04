@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<title>Verbo Inglés</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 40px;
+    text-align: center;
+  }
+  h1 {
+    text-align: center;
+    transition: text-align 0.3s ease;
+  }
+  #exerciseContainer {
+    display: none;
+    margin-top: 20px;
+    text-align: left;
+  }
+  .form-group {
+    margin-bottom: 15px;
+  }
+  input[type="text"] {
+    width: 300px;
+    padding: 8px;
+    font-size: 16px;
+  }
+  .correct {
+    background-color: lightgreen;
+    border: 2px solid green;
+  }
+  .incorrect {
+    background-color: lightcoral;
+    border: 2px solid red;
+  }
+  #message {
+    font-size: 24px;
+    margin-top: 20px;
+  }
+  #checkBtn, #nextBtn, #startBtn {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin-top: 20px;
+  }
+  #nextBtn {
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+<h1 id="pageTitle">IRREGULAR VERBS PART 1</h1>
+<button id="startBtn">Start</button>
+
+<div id="exerciseContainer">
+  <h3>INFINITIVE</h3>
+  <div class="form-group">
+    <input type="text" id="infinitive" />
+  </div>
+
+  <h3>PAST SIMPLE</h3>
+  <div class="form-group">
+    <input type="text" id="pastSimple" />
+  </div>
+
+  <h3>PAST PARTICIPLE</h3>
+  <div class="form-group">
+    <input type="text" id="pastParticiple" />
+  </div>
+
+  <button id="checkBtn">Check</button>
+  <button id="nextBtn">Next</button>
+  <div id="message"></div>
+</div>
+
+<script>
+let verbs = [];
+let currentVerb = null;
+let lockedForm = "";
+
+// Cargar el JSON externo
+async function loadVerbs() {
+  try {
+    const response = await fetch('verbs.json');
+    verbs = await response.json();
+  } catch (error) {
+    console.error('Error al cargar verbs.json:', error);
+    alert('No se pudo cargar la lista de verbos.');
+  }
+}
+
+function getRandomVerb() {
+  const index = Math.floor(Math.random() * verbs.length);
+  return verbs[index];
+}
+
+function pickForm(verb) {
+  const forms = ["infinitive", "pastSimple", "pastParticiple"];
+  let form = forms[Math.floor(Math.random() * forms.length)];
+  if (verb.infinitive === "can" && form === "pastParticiple") {
+    let altForms = forms.filter(f => f !== "pastParticiple");
+    form = altForms[Math.floor(Math.random() * altForms.length)];
+  }
+  if (form === "pastParticiple" && verb.pastParticiple === null) {
+    let altForms = forms.filter(f => f !== "pastParticiple");
+    form = altForms[Math.floor(Math.random() * altForms.length)];
+  }
+  return form;
+}
+
+function loadVerb() {
+  document.getElementById("message").innerHTML = "";
+  ['infinitive', 'pastSimple', 'pastParticiple'].forEach(id => {
+    const input = document.getElementById(id);
+    input.value = "";
+    input.disabled = false;
+    input.className = "";
+  });
+  document.getElementById("nextBtn").style.display = "none";
+  document.getElementById("checkBtn").disabled = false;
+
+  currentVerb = getRandomVerb();
+  let form = pickForm(currentVerb);
+
+  if (form === "infinitive") {
+    document.getElementById("infinitive").value = currentVerb.infinitive;
+    document.getElementById("infinitive").disabled = true;
+  } else if (form === "pastSimple") {
+    let val = Array.isArray(currentVerb.pastSimple) ? currentVerb.pastSimple[0] : currentVerb.pastSimple;
+    document.getElementById("pastSimple").value = val;
+    document.getElementById("pastSimple").disabled = true;
+  } else if (form === "pastParticiple") {
+    let val = Array.isArray(currentVerb.pastParticiple) ? currentVerb.pastParticiple[0] : currentVerb.pastParticiple;
+    document.getElementById("pastParticiple").value = val;
+    document.getElementById("pastParticiple").disabled = true;
+  }
+
+  lockedForm = form;
+}
+
+function isAnswerCorrect(userAnswer, validAnswers) {
+  if (!userAnswer) return false;
+  userAnswer = userAnswer.toLowerCase().trim();
+  const userParts = userAnswer.split("/").map(s => s.trim()).filter(s => s.length > 0);
+  const validParts = Array.isArray(validAnswers) ? validAnswers.map(s => s.toLowerCase().trim()) : [validAnswers.toLowerCase().trim()];
+  if (userParts.length === 1) {
+    return validParts.includes(userParts[0]);
+  }
+  for (let p of userParts) {
+    if (!validParts.includes(p)) {
+      return false;
+    }
+  }
+  return true;
+}
+
+document.getElementById("checkBtn").addEventListener("click", () => {
+  let correctCount = 0;
+  const totalFields = 3;
+
+  const userInf = document.getElementById("infinitive").value.trim();
+  const userPastS = document.getElementById("pastSimple").value.trim();
+  const userPastP = document.getElementById("pastParticiple").value.trim();
+
+  if (lockedForm !== "infinitive") {
+    if (isAnswerCorrect(userInf, currentVerb.infinitive)) {
+      let infInput = document.getElementById("infinitive");
+      infInput.className = "correct";
+      infInput.disabled = true;
+      correctCount++;
+    } else {
+      let infInput = document.getElementById("infinitive");
+      infInput.className = "incorrect";
+      infInput.disabled = false;
+    }
+  } else {
+    document.getElementById("infinitive").className = "correct";
+    correctCount++;
+  }
+
+  const validPastS = Array.isArray(currentVerb.pastSimple) ? currentVerb.pastSimple : [currentVerb.pastSimple];
+  if (lockedForm !== "pastSimple") {
+    if (isAnswerCorrect(userPastS, validPastS)) {
+      let psInput = document.getElementById("pastSimple");
+      psInput.className = "correct";
+      psInput.disabled = true;
+      correctCount++;
+    } else {
+      let psInput = document.getElementById("pastSimple");
+      psInput.className = "incorrect";
+      psInput.disabled = false;
+    }
+  } else {
+    document.getElementById("pastSimple").className = "correct";
+    correctCount++;
+  }
+
+  if (currentVerb.pastParticiple !== null && lockedForm !== "pastParticiple") {
+    const validPastP = Array.isArray(currentVerb.pastParticiple) ? currentVerb.pastParticiple : [currentVerb.pastParticiple];
+    if (isAnswerCorrect(userPastP, validPastP)) {
+      let ppInput = document.getElementById("pastParticiple");
+      ppInput.className = "correct";
+      ppInput.disabled = true;
+      correctCount++;
+    } else {
+      let ppInput = document.getElementById("pastParticiple");
+      ppInput.className = "incorrect";
+      ppInput.disabled = false;
+    }
+  } else {
+    document.getElementById("pastParticiple").className = "correct";
+    correctCount++;
+  }
+
+  if (correctCount === totalFields) {
+    document.getElementById("message").textContent = "Good job!";
+    document.getElementById("message").style.color = "green";
+    document.getElementById("nextBtn").style.display = "inline";
+    document.getElementById("checkBtn").disabled = true;
+  } else {
+    document.getElementById("message").textContent = "Wrong answer";
+    document.getElementById("message").style.color = "red";
+    document.getElementById("nextBtn").style.display = "none";
+    document.getElementById("checkBtn").disabled = false;
+  }
+});
+
+document.getElementById("nextBtn").addEventListener("click", () => {
+  loadVerb();
+});
+
+document.getElementById("startBtn").addEventListener("click", async () => {
+  await loadVerbs();
+  document.getElementById("startBtn").style.display = "none";
+  document.getElementById("exerciseContainer").style.display = "block";
+  document.getElementById("pageTitle").style.textAlign = "left";
+  loadVerb();
+});
+</script>
+
+</body>
+</html>
