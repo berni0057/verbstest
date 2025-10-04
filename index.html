@@ -17,7 +17,6 @@
     font-weight: 600;
     font-size: 2.5rem;
     margin-bottom: 20px;
-    transition: text-align 0.3s ease;
   }
   #exerciseContainer {
     display: none;
@@ -27,12 +26,24 @@
     margin-left: auto;
     margin-right: auto;
     background: white;
-    padding: 25px 30px;
+    padding: 40px 70px 40px 40px;
     border-radius: 12px;
     box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    min-height: 200px;
+  }
+  #errorMessage {
+    color: #dc3545;
+    font-weight: 600;
+    font-size: 1.5rem;
+    display: none;
+    margin-bottom: 20px;
+  }
+  #retryBtn {
+    display: none;
+    margin-top: 10px;
   }
   .form-group {
-    margin-bottom: 18px;
+    margin-bottom: 30px;
   }
   label {
     display: block;
@@ -109,24 +120,28 @@
 <button id="startBtn">Start</button>
 
 <div id="exerciseContainer" aria-live="polite">
-  <div class="form-group">
-    <label for="infinitive">INFINITIVE</label>
-    <input type="text" id="infinitive" aria-describedby="infinitiveLabel" autocomplete="off"/>
-  </div>
+  <div id="errorMessage">Error</div>
+  <button id="retryBtn">Retry</button>
+  <div id="exerciseContent">
+    <div class="form-group">
+      <label for="infinitive">INFINITIVE</label>
+      <input type="text" id="infinitive" aria-describedby="infinitiveLabel" autocomplete="off"/>
+    </div>
 
-  <div class="form-group">
-    <label for="pastSimple">PAST SIMPLE</label>
-    <input type="text" id="pastSimple" aria-describedby="pastSimpleLabel" autocomplete="off"/>
-  </div>
+    <div class="form-group">
+      <label for="pastSimple">PAST SIMPLE</label>
+      <input type="text" id="pastSimple" aria-describedby="pastSimpleLabel" autocomplete="off"/>
+    </div>
 
-  <div class="form-group">
-    <label for="pastParticiple">PAST PARTICIPLE</label>
-    <input type="text" id="pastParticiple" aria-describedby="pastParticipleLabel" autocomplete="off"/>
-  </div>
+    <div class="form-group">
+      <label for="pastParticiple">PAST PARTICIPLE</label>
+      <input type="text" id="pastParticiple" aria-describedby="pastParticipleLabel" autocomplete="off"/>
+    </div>
 
-  <button id="checkBtn">Check</button>
-  <button id="nextBtn">Next</button>
-  <div id="message" role="alert"></div>
+    <button id="checkBtn">Check</button>
+    <button id="nextBtn">Next</button>
+    <div id="message" role="alert"></div>
+  </div>
 </div>
 
 <script>
@@ -139,9 +154,10 @@ async function loadVerbs() {
     const response = await fetch('verbs.json');
     if (!response.ok) throw new Error('HTTP error ' + response.status);
     verbs = await response.json();
+    return true;
   } catch (error) {
     console.error('Error al cargar verbs.json:', error);
-    alert('No se pudo cargar la lista de verbos: ' + error.message);
+    return false;
   }
 }
 
@@ -286,11 +302,23 @@ document.getElementById("nextBtn").addEventListener("click", () => {
 });
 
 document.getElementById("startBtn").addEventListener("click", async () => {
-  await loadVerbs();
+  const success = await loadVerbs();
   document.getElementById("startBtn").style.display = "none";
   document.getElementById("exerciseContainer").style.display = "block";
-  document.getElementById("pageTitle").style.textAlign = "left";
-  loadVerb();
+  if (!success) {
+    document.getElementById("exerciseContent").style.display = "none";
+    document.getElementById("errorMessage").style.display = "block";
+    document.getElementById("retryBtn").style.display = "inline-block";
+  } else {
+    document.getElementById("errorMessage").style.display = "none";
+    document.getElementById("retryBtn").style.display = "none";
+    document.getElementById("exerciseContent").style.display = "block";
+    loadVerb();
+  }
+});
+
+document.getElementById("retryBtn").addEventListener("click", () => {
+  window.location.reload();
 });
 </script>
 
