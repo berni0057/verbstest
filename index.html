@@ -346,7 +346,6 @@ document.getElementById("retryBtn").addEventListener("click", () => {
 });
 
 const checkBtn = document.getElementById("checkBtn");
-const nextBtn = document.getElementById("nextBtn");
 
 ['infinitive', 'pastSimple', 'pastParticiple'].forEach(id => {
   const input = document.getElementById(id);
@@ -355,8 +354,6 @@ const nextBtn = document.getElementById("nextBtn");
       event.preventDefault();
       if (!checkBtn.disabled) {
         checkBtn.click();
-      } else if (!nextBtn.disabled && window.getComputedStyle(nextBtn).display !== "none") {
-        nextBtn.click();
       }
     }
   });
@@ -392,6 +389,7 @@ const nextBtn = document.getElementById("nextBtn");
 
 </body>
 </html>
+
 
 
 
