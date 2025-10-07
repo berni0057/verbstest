@@ -344,6 +344,24 @@ document.getElementById("startBtn").addEventListener("click", async () => {
 document.getElementById("retryBtn").addEventListener("click", () => {
   window.location.reload();
 });
+
+const checkBtn = document.getElementById("checkBtn");
+const nextBtn = document.getElementById("nextBtn");
+
+['infinitive', 'pastSimple', 'pastParticiple'].forEach(id => {
+  const input = document.getElementById(id);
+  input.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      if (!checkBtn.disabled) {
+        checkBtn.click();
+      } else if (!nextBtn.disabled && nextBtn.style.display !== "none") {
+        nextBtn.click();
+      }
+    }
+  });
+});
+
 </script>
 <div id="attribution">
   <a href="https://www.flaticon.com/free-icons/england" title="england icons" target="_blank" rel="noopener noreferrer">
@@ -374,4 +392,5 @@ document.getElementById("retryBtn").addEventListener("click", () => {
 
 </body>
 </html>
+
 
