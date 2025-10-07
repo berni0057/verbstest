@@ -198,20 +198,40 @@ function loadVerb() {
   document.getElementById("checkBtn").disabled = false;
 
   currentVerb = getRandomVerb();
-  const form = pickForm(currentVerb);
 
+  // Elegimos el campo de la pregunta sin null
+  let form = pickForm(currentVerb);
+
+  // Si el campo es null, no permitas escribir ni colorear
+  if (currentVerb.pastParticiple === null) {
+    document.getElementById("pastParticiple").disabled = true;
+    document.getElementById("pastParticiple").className = "";
+  }
+  if (currentVerb.pastSimple === null) {
+    document.getElementById("pastSimple").disabled = true;
+    document.getElementById("pastSimple").className = "";
+  }
+  if (currentVerb.infinitive === null) {
+    document.getElementById("infinitive").disabled = true;
+    document.getElementById("infinitive").className = "";
+  }
+
+  // Autocompletar la forma bloqueada como antes
   if (form === "infinitive") {
-    const input = document.getElementById("infinitive");
-    input.value = currentVerb.infinitive;
-    input.disabled = true;
+    document.getElementById("infinitive").value = currentVerb.infinitive;
+    document.getElementById("infinitive").disabled = true;
   } else if (form === "pastSimple") {
-    const input = document.getElementById("pastSimple");
-    input.value = Array.isArray(currentVerb.pastSimple) ? currentVerb.pastSimple[0] : currentVerb.pastSimple;
-    input.disabled = true;
+    document.getElementById("pastSimple").value = Array.isArray(currentVerb.pastSimple) ? currentVerb.pastSimple[0] : currentVerb.pastSimple;
+    document.getElementById("pastSimple").disabled = true;
   } else if (form === "pastParticiple") {
-    const input = document.getElementById("pastParticiple");
-    input.value = Array.isArray(currentVerb.pastParticiple) ? currentVerb.pastParticiple[0] : currentVerb.pastParticiple;
-    input.disabled = true;
+    // Si es null no lo pongas, solo bloquea; si no es null autocompleta como siempre
+    if (currentVerb.pastParticiple !== null) {
+      document.getElementById("pastParticiple").value = Array.isArray(currentVerb.pastParticiple) ? currentVerb.pastParticiple[0] : currentVerb.pastParticiple;
+      document.getElementById("pastParticiple").disabled = true;
+    } else {
+      document.getElementById("pastParticiple").value = "";
+      document.getElementById("pastParticiple").disabled = true;
+    }
   }
 
   lockedForm = form;
@@ -250,13 +270,13 @@ document.getElementById("checkBtn").addEventListener("click", () => {
       input.disabled = false;
     }
   } else {
-    const input = document.getElementById("infinitive");
-    input.className = "correct";
-    correctCount++;
+    document.getElementById("infinitive").className = "";
   }
 
   const validPastS = Array.isArray(currentVerb.pastSimple) ? currentVerb.pastSimple : [currentVerb.pastSimple];
-  if (lockedForm !== "pastSimple") {
+  if (currentVerb.pastSimple === null || lockedForm === "pastSimple") {
+    document.getElementById("pastSimple").className = "";
+  } else {
     const input = document.getElementById("pastSimple");
     if (isAnswerCorrect(userPastS, validPastS)) {
       input.className = "correct";
@@ -266,13 +286,11 @@ document.getElementById("checkBtn").addEventListener("click", () => {
       input.className = "incorrect";
       input.disabled = false;
     }
-  } else {
-    const input = document.getElementById("pastSimple");
-    input.className = "correct";
-    correctCount++;
   }
 
-  if (currentVerb.pastParticiple !== null && lockedForm !== "pastParticiple") {
+  if (currentVerb.pastParticiple === null || lockedForm === "pastParticiple") {
+    document.getElementById("pastParticiple").className = "";
+  } else {
     const validPastP = Array.isArray(currentVerb.pastParticiple) ? currentVerb.pastParticiple : [currentVerb.pastParticiple];
     const input = document.getElementById("pastParticiple");
     if (isAnswerCorrect(userPastP, validPastP)) {
@@ -283,10 +301,6 @@ document.getElementById("checkBtn").addEventListener("click", () => {
       input.className = "incorrect";
       input.disabled = false;
     }
-  } else {
-    const input = document.getElementById("pastParticiple");
-    input.className = "correct";
-    correctCount++;
   }
 
   const message = document.getElementById("message");
@@ -356,7 +370,3 @@ document.getElementById("retryBtn").addEventListener("click", () => {
 
 </body>
 </html>
-
-
-
-
