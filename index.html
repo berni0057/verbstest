@@ -160,18 +160,6 @@ let verbs = [];
 let currentVerb = null;
 let lockedForm = "";
 
-async function loadVerbs() {
-  try {
-    const response = await fetch('verbs.json');
-    if (!response.ok) throw new Error('HTTP error ' + response.status);
-    verbs = await response.json();
-    return true;
-  } catch (error) {
-    console.error('Error al cargar verbs.json:', error);
-    return false;
-  }
-}
-
 function getRandomVerb() {
   const index = Math.floor(Math.random() * verbs.length);
   return verbs[index];
@@ -415,6 +403,7 @@ const checkBtn = document.getElementById("checkBtn");
 
 </body>
 </html>
+
 
 
 
