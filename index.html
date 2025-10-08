@@ -120,13 +120,13 @@
 
 <header>
   <h1 id="pageTitle">IRREGULAR VERBS</h1>
-  <h2 style="font-weight: 400; color: #555; margin-top: -12px; font-size: 1.3rem;">be -&gt; learn</h2>
-</header>
+  <h2 id="subTitle" style="font-weight: 400; color: #555; margin-top: -12px; font-size: 1.3rem;"></h2>
+  <button id="backToMenuBtn" style="display:none; margin-top: 10px;">Menu</button>
 
 <div id="startBtns">
-  <button id="btn1">be-&gt;learn</button>
-  <button id="btn2">leave-&gt;write</button>
-  <button id="btn3">All</button>
+  <button id="btn1">be → learn</button>
+  <button id="btn2">leave → write</button>
+  <button id="btn3">All verbs</button>
 </div>
 
 
@@ -336,11 +336,22 @@ async function loadVerbsFrom(file) {
   }
 }
 
+const subtitles = {
+  btn1: "be → learn",
+  btn2: "leave → write",
+  btn3: "All verbs"
+};
+
 Object.keys(btnMap).forEach(btnId => {
   document.getElementById(btnId).addEventListener("click", async () => {
     const success = await loadVerbsFrom(btnMap[btnId]);
     document.getElementById("startBtns").style.display = "none";
     document.getElementById("exerciseContainer").style.display = "block";
+    document.getElementById("backToMenuBtn").style.display = "inline-block";
+
+    // Aquí actualizas el subtítulo dinámicamente
+    document.getElementById("subTitle").textContent = subtitles[btnId] || "";
+
     if (!success) {
       document.getElementById("exerciseContent").style.display = "none";
       document.getElementById("errorMessage").style.display = "block";
@@ -353,6 +364,7 @@ Object.keys(btnMap).forEach(btnId => {
     }
   });
 });
+
 
 
 document.getElementById("retryBtn").addEventListener("click", () => {
@@ -372,8 +384,20 @@ const checkBtn = document.getElementById("checkBtn");
     }
   });
 });
+document.getElementById("backToMenuBtn").addEventListener("click", () => {
+  document.getElementById("exerciseContainer").style.display = "none";
+  document.getElementById("startBtns").style.display = "block";
+  document.getElementById("subTitle").textContent = "";
+  document.getElementById("backToMenuBtn").style.display = "none";
+});
+
 
 </script>
+
+<div id="disclaimer" style="font-family: 'Montserrat', sans-serif; font-size: 11px; color: #ff6161; position: fixed; bottom: 24px; right: 12px; max-width: 270px; text-align: right; z-index: 1000;">
+  DISCLAMER: made with AI, may contain errors.
+</div>
+
 <div id="attribution">
   <a href="https://www.flaticon.com/free-icons/england" title="england icons" target="_blank" rel="noopener noreferrer">
     England icons created by Freepik - Flaticon
@@ -383,12 +407,12 @@ const checkBtn = document.getElementById("checkBtn");
 <style>
   #attribution {
     font-family: 'Montserrat', sans-serif;
-    font-size: 10px;
+    font-size: 11px;
     color: #555;
     position: fixed;
     bottom: 8px;
     right: 12px;
-    max-width: 230px;
+    max-width: 270px;
     text-align: right;
     z-index: 1000;
   }
@@ -403,9 +427,3 @@ const checkBtn = document.getElementById("checkBtn");
 
 </body>
 </html>
-
-
-
-
-
-
