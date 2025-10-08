@@ -123,7 +123,12 @@
   <h2 style="font-weight: 400; color: #555; margin-top: -12px; font-size: 1.3rem;">be -&gt; learn</h2>
 </header>
 
-<button id="startBtn">Start</button>
+<div id="startBtns">
+  <button id="btn1">be-&gt;learn</button>
+  <button id="btn2">leave-&gt;write</button>
+  <button id="btn3">All</button>
+</div>
+
 
 <div id="exerciseContainer" aria-live="polite">
   <div id="errorMessage">Error loading verbs list</div>
@@ -325,21 +330,42 @@ document.getElementById("nextBtn").addEventListener("click", () => {
   loadVerb();
 });
 
-document.getElementById("startBtn").addEventListener("click", async () => {
-  const success = await loadVerbs();
-  document.getElementById("startBtn").style.display = "none";
-  document.getElementById("exerciseContainer").style.display = "block";
-  if (!success) {
-    document.getElementById("exerciseContent").style.display = "none";
-    document.getElementById("errorMessage").style.display = "block";
-    document.getElementById("retryBtn").style.display = "inline-block";
-  } else {
-    document.getElementById("errorMessage").style.display = "none";
-    document.getElementById("retryBtn").style.display = "none";
-    document.getElementById("exerciseContent").style.display = "block";
-    loadVerb();
+const btnMap = {
+  btn1: "verbs.json",
+  btn2: "verbs2.json",
+  btn3: "all.json"
+};
+
+async function loadVerbsFrom(file) {
+  try {
+    const response = await fetch(file);
+    if (!response.ok) throw new Error('HTTP error ' + response.status);
+    verbs = await response.json();
+    return true;
+  } catch (error) {
+    console.error('Error al cargar ' + file + ':', error);
+    return false;
   }
+}
+
+Object.keys(btnMap).forEach(btnId => {
+  document.getElementById(btnId).addEventListener("click", async () => {
+    const success = await loadVerbsFrom(btnMap[btnId]);
+    document.getElementById("startBtns").style.display = "none";
+    document.getElementById("exerciseContainer").style.display = "block";
+    if (!success) {
+      document.getElementById("exerciseContent").style.display = "none";
+      document.getElementById("errorMessage").style.display = "block";
+      document.getElementById("retryBtn").style.display = "inline-block";
+    } else {
+      document.getElementById("errorMessage").style.display = "none";
+      document.getElementById("retryBtn").style.display = "none";
+      document.getElementById("exerciseContent").style.display = "block";
+      loadVerb();
+    }
+  });
 });
+
 
 document.getElementById("retryBtn").addEventListener("click", () => {
   window.location.reload();
@@ -389,6 +415,7 @@ const checkBtn = document.getElementById("checkBtn");
 
 </body>
 </html>
+
 
 
 
