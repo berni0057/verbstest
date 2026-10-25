@@ -1,0 +1,429 @@
+[
+  {
+    "id": 1,
+    "sentence": "“What are you so excited {{0}}?” “We’re going on holiday tomorrow.”",
+    "answers": [
+      [
+        "about"
+      ]
+    ]
+  },
+  {
+    "id": 2,
+    "sentence": "“I’m very angry {{0}} you.” “Why? What have I done?”",
+    "answers": [
+      [
+        "with"
+      ]
+    ]
+  },
+  {
+    "id": 3,
+    "sentence": "Are you any good {{0}} maths? I’m hopeless.",
+    "answers": [
+      [
+        "at"
+      ]
+    ]
+  },
+  {
+    "id": 4,
+    "sentence": "Jenny’s getting married {{0}} Harry. Did you know?",
+    "answers": [
+      [
+        "to"
+      ]
+    ]
+  },
+  {
+    "id": 5,
+    "sentence": "We keep a light on at night because I’m afraid {{0}} the dark.",
+    "answers": [
+      [
+        "of"
+      ]
+    ]
+  },
+  {
+    "id": 6,
+    "sentence": "My sister’s very different {{0}} me. I’m blond but she’s brunette.",
+    "answers": [
+      [
+        "from"
+      ]
+    ]
+  },
+  {
+    "id": 7,
+    "sentence": "I’m tired {{0}} work. I want a holiday.",
+    "answers": [
+      [
+        "of"
+      ]
+    ]
+  },
+  {
+    "id": 8,
+    "sentence": "I feel very sorry {{0}} Kathy. Five kids and a fool husband. What sort of life is that?",
+    "answers": [
+      [
+        "for"
+      ]
+    ]
+  },
+  {
+    "id": 9,
+    "sentence": "Are you interested {{0}} travel programmes? There’s one on telly tonight.",
+    "answers": [
+      [
+        "in"
+      ]
+    ]
+  },
+  {
+    "id": 10,
+    "sentence": "Teenagers are often rude {{0}} their parents.",
+    "answers": [
+      [
+        "to"
+      ]
+    ]
+  },
+  {
+    "id": 11,
+    "sentence": "I’m very proud {{0}} my children. I think they’re wonderful.",
+    "answers": [
+      [
+        "of"
+      ]
+    ]
+  },
+  {
+    "id": 12,
+    "sentence": "Did you know that chewing gum is good {{0}} your teeth? Well, it is.",
+    "answers": [
+      [
+        "for"
+      ]
+    ]
+  },
+  {
+    "id": 13,
+    "sentence": "Everyone likes Bill. He’s good-looking, witty and charming, and I’m very jealous {{0}} him!",
+    "answers": [
+      [
+        "of"
+      ]
+    ]
+  },
+  {
+    "id": 14,
+    "sentence": "“I told her I thought she was stupid.” “That wasn’t very kind {{0}} you.”",
+    "answers": [
+      [
+        "of"
+      ]
+    ]
+  },
+  {
+    "id": 15,
+    "sentence": "I haven’t heard from Len for ages. I’m a bit worried {{0}} him.",
+    "answers": [
+      [
+        "about"
+      ]
+    ]
+  },
+  {
+    "id": 16,
+    "sentence": "My homework was full {{0}} mistakes.",
+    "answers": [
+      [
+        "of"
+      ]
+    ]
+  },
+  {
+    "id": 17,
+    "sentence": "Italy is famous {{0}} its antiquities and its ice cream.",
+    "answers": [
+      [
+        "for"
+      ]
+    ]
+  },
+  {
+    "id": 18,
+    "sentence": "“The train leaves at 10.00.” “Are you sure {{0}} that?”",
+    "answers": [
+      [
+        "about"
+      ]
+    ]
+  },
+  {
+    "id": 19,
+    "sentence": "When you leave home, you’re responsible {{0}} everything!",
+    "answers": [
+      [
+        "for"
+      ]
+    ]
+  },
+  {
+    "id": 20,
+    "sentence": "I’m fed up {{0}} this weather! Where’s the sunshine gone?",
+    "answers": [
+      [
+        "with"
+      ]
+    ]
+  },
+  {
+    "id": 21,
+    "sentence": "Are you fond {{0}} sport? “Not really. I’m not very keen {{1}} it.”",
+    "answers": [
+      [
+        "of"
+      ],
+      [
+        "on"
+      ]
+    ]
+  },
+  {
+    "id": 22,
+    "sentence": "What about cinema? Are you {{0}} movies or do you prefer reading?",
+    "answers": [
+      [
+        "into"
+      ]
+    ]
+  },
+  {
+    "id": 23,
+    "sentence": "I don’t agree {{0}} you.",
+    "answers": [
+      [
+        "with"
+      ]
+    ]
+  },
+  {
+    "id": 24,
+    "sentence": "I asked {{0}} a cup of coffee.",
+    "answers": [
+      [
+        "for"
+      ]
+    ]
+  },
+  {
+    "id": 25,
+    "sentence": "Ask {{0}}your sister. She’ll know.",
+    "answers": [
+      []
+    ]
+  },
+  {
+    "id": 26,
+    "sentence": "We arrived {{0}} Paris at 4.00.",
+    "answers": [
+      [
+        "in"
+      ]
+    ]
+  },
+  {
+    "id": 27,
+    "sentence": "She arrived {{0}} the airport.",
+    "answers": [
+      [
+        "at"
+      ]
+    ]
+  },
+  {
+    "id": 28,
+    "sentence": "This house belongs {{0}} my mother.",
+    "answers": [
+      [
+        "to"
+      ]
+    ]
+  },
+  {
+    "id": 29,
+    "sentence": "He borrowed some money {{0}} his sister.",
+    "answers": [
+      [
+        "from"
+      ]
+    ]
+  },
+  {
+    "id": 30,
+    "sentence": "Everything depends {{0}} the weather.",
+    "answers": [
+      [
+        "on"
+      ]
+    ]
+  },
+  {
+    "id": 31,
+    "sentence": "We enjoyed {{0}}the party.",
+    "answers": [
+      []
+    ]
+  },
+  {
+    "id": 32,
+    "sentence": "I got {{0}} London at 6.00.",
+    "answers": [
+      [
+        "to"
+      ]
+    ]
+  },
+  {
+    "id": 33,
+    "sentence": "Listen {{0}} me very carefully.",
+    "answers": [
+      [
+        "to"
+      ]
+    ]
+  },
+  {
+    "id": 34,
+    "sentence": "Look {{0}} this old photo.",
+    "answers": [
+      [
+        "at"
+      ]
+    ]
+  },
+  {
+    "id": 35,
+    "sentence": "He married {{0}}his aerobics teacher.",
+    "answers": [
+      []
+    ]
+  },
+  {
+    "id": 36,
+    "sentence": "I met {{0}}some old friends last night.",
+    "answers": [
+      []
+    ]
+  },
+  {
+    "id": 37,
+    "sentence": "Can you pay {{0}} my coffee?",
+    "answers": [
+      [
+        "for"
+      ]
+    ]
+  },
+  {
+    "id": 38,
+    "sentence": "Phone/call/ring {{0}}me tonight.",
+    "answers": [
+      []
+    ]
+  },
+  {
+    "id": 39,
+    "sentence": "Did you speak/ talk {{0}} the boss about your contract?",
+    "answers": [
+      [
+        "to"
+      ]
+    ]
+  },
+  {
+    "id": 40,
+    "sentence": "Tell {{0}}your wife what happened.",
+    "answers": [
+      []
+    ]
+  },
+  {
+    "id": 41,
+    "sentence": "What do you think {{0}} my new shoes?",
+    "answers": [
+      [
+        "of",
+        "about"
+      ]
+    ]
+  },
+  {
+    "id": 42,
+    "sentence": "What are you thinking {{0}}?",
+    "answers": [
+      [
+        "about"
+      ]
+    ]
+  },
+  {
+    "id": 43,
+    "sentence": "We waited {{0}} the bus.",
+    "answers": [
+      [
+        "for"
+      ]
+    ]
+  },
+  {
+    "id": 44,
+    "sentence": "I work {{0}} a multinational company.",
+    "answers": [
+      [
+        "for"
+      ]
+    ]
+  },
+  {
+    "id": 45,
+    "sentence": "I worked {{0}} a waiter.",
+    "answers": [
+      [
+        "as"
+      ]
+    ]
+  },
+  {
+    "id": 46,
+    "sentence": "Don’t worry {{0}} anything.",
+    "answers": [
+      [
+        "about"
+      ]
+    ]
+  },
+  {
+    "id": 47,
+    "sentence": "Write {{0}} me soon.",
+    "answers": [
+      [
+        "to"
+      ]
+    ]
+  },
+  {
+    "id": 48,
+    "sentence": "She fell {{0}} love {{1}} an Italian boy.",
+    "answers": [
+      [
+        "in"
+      ],
+      [
+        "with"
+      ]
+    ]
+  }
+]

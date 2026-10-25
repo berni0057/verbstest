@@ -1,0 +1,557 @@
+[
+  {
+    "id": 1,
+    "sentence": "The plane arrived {{0}} Heathrow at 7 p.m.",
+    "answers": [
+      [
+        "at"
+      ]
+    ]
+  },
+  {
+    "id": 2,
+    "sentence": "Can you ask Mary {{0}} the keys?",
+    "answers": [
+      [
+        "for"
+      ]
+    ]
+  },
+  {
+    "id": 3,
+    "sentence": "I am afraid {{0}} spiders.",
+    "answers": [
+      [
+        "of"
+      ]
+    ]
+  },
+  {
+    "id": 4,
+    "sentence": "She applied {{0}} the job.",
+    "answers": [
+      [
+        "for"
+      ]
+    ]
+  },
+  {
+    "id": 5,
+    "sentence": "Do you believe {{0}} God?",
+    "answers": [
+      [
+        "in"
+      ]
+    ]
+  },
+  {
+    "id": 6,
+    "sentence": "This book belongs {{0}} John.",
+    "answers": [
+      [
+        "to"
+      ]
+    ]
+  },
+  {
+    "id": 7,
+    "sentence": "I am going to complain {{0}} this hotel.",
+    "answers": [
+      [
+        "about"
+      ]
+    ]
+  },
+  {
+    "id": 8,
+    "sentence": "She doesn’t know how to deal {{0}} her problems.",
+    "answers": [
+      [
+        "with"
+      ]
+    ]
+  },
+  {
+    "id": 9,
+    "sentence": "Going out at the weekend depends {{0}} the weather.",
+    "answers": [
+      [
+        "on"
+      ]
+    ]
+  },
+  {
+    "id": 10,
+    "sentence": "The dog died {{0}} a heart attack.",
+    "answers": [
+      [
+        "of"
+      ]
+    ]
+  },
+  {
+    "id": 11,
+    "sentence": "Bitter beer is different {{0}} that one.",
+    "answers": [
+      [
+        "from"
+      ]
+    ]
+  },
+  {
+    "id": 12,
+    "sentence": "This car is similar {{0}} that one.",
+    "answers": [
+      [
+        "to"
+      ]
+    ]
+  },
+  {
+    "id": 13,
+    "sentence": "Last night I dreamt {{0}} being a rich woman.",
+    "answers": [
+      [
+        "about",
+        "of"
+      ]
+    ]
+  },
+  {
+    "id": 14,
+    "sentence": "She is very good {{0}} playing tennis.",
+    "answers": [
+      [
+        "at"
+      ]
+    ]
+  },
+  {
+    "id": 15,
+    "sentence": "We are interested {{0}} politics.",
+    "answers": [
+      [
+        "in"
+      ]
+    ]
+  },
+  {
+    "id": 16,
+    "sentence": "We are listening {{0}} the news.",
+    "answers": [
+      [
+        "to"
+      ]
+    ]
+  },
+  {
+    "id": 17,
+    "sentence": "Look {{0}} the blackboard!",
+    "answers": [
+      [
+        "at"
+      ]
+    ]
+  },
+  {
+    "id": 18,
+    "sentence": "Nurses look {{0}} people in hospitals.",
+    "answers": [
+      [
+        "after"
+      ]
+    ]
+  },
+  {
+    "id": 19,
+    "sentence": "We are looking forward {{0}} our holidays.",
+    "answers": [
+      [
+        "to"
+      ]
+    ]
+  },
+  {
+    "id": 20,
+    "sentence": "I have lost my keys. Can you help me look {{0}} them?",
+    "answers": [
+      [
+        "for"
+      ]
+    ]
+  },
+  {
+    "id": 21,
+    "sentence": "I rely {{0}} my car; it has never broken down.",
+    "answers": [
+      [
+        "on"
+      ]
+    ]
+  },
+  {
+    "id": 22,
+    "sentence": "She suffers {{0}} a terrible illness.",
+    "answers": [
+      [
+        "from"
+      ]
+    ]
+  },
+  {
+    "id": 23,
+    "sentence": "I am thinking {{0}} leaving my studies.",
+    "answers": [
+      [
+        "about",
+        "of"
+      ]
+    ]
+  },
+  {
+    "id": 24,
+    "sentence": "We are waiting {{0}} the bus.",
+    "answers": [
+      [
+        "for"
+      ]
+    ]
+  },
+  {
+    "id": 25,
+    "sentence": "Don’t worry {{0}} me; I am fine.",
+    "answers": [
+      [
+        "about"
+      ]
+    ]
+  },
+  {
+    "id": 26,
+    "sentence": "Ann works {{0}} a paediatrician.",
+    "answers": [
+      [
+        "as"
+      ]
+    ]
+  },
+  {
+    "id": 27,
+    "sentence": "She lent the pen {{0}} another girl.",
+    "answers": [
+      [
+        "to"
+      ]
+    ]
+  },
+  {
+    "id": 28,
+    "sentence": "They said {{0}} me that they were happy.",
+    "answers": [
+      [
+        "to"
+      ]
+    ]
+  },
+  {
+    "id": 29,
+    "sentence": "They told {{0}}me that they were happy.",
+    "answers": [
+      []
+    ]
+  },
+  {
+    "id": 30,
+    "sentence": "Pick {{0}} all the pieces of paper {{1}} the floor.",
+    "answers": [
+      [
+        "up"
+      ],
+      [
+        "from"
+      ]
+    ]
+  },
+  {
+    "id": 31,
+    "sentence": "They took {{0}} their coats because it was very hot.",
+    "answers": [
+      [
+        "off"
+      ]
+    ]
+  },
+  {
+    "id": 32,
+    "sentence": "We thanked him {{0}} all his help.",
+    "answers": [
+      [
+        "for"
+      ]
+    ]
+  },
+  {
+    "id": 33,
+    "sentence": "Please, explain {{0}} me how you solved the problem.",
+    "answers": [
+      [
+        "to"
+      ]
+    ]
+  },
+  {
+    "id": 34,
+    "sentence": "Peter married {{0}}Sue last year.",
+    "answers": [
+      []
+    ]
+  },
+  {
+    "id": 35,
+    "sentence": "I am married {{0}} George.",
+    "answers": [
+      [
+        "to"
+      ]
+    ]
+  },
+  {
+    "id": 36,
+    "sentence": "A lot of people still believe {{0}} magic.",
+    "answers": [
+      [
+        "in"
+      ]
+    ]
+  },
+  {
+    "id": 37,
+    "sentence": "She is thinking {{0}} her holidays.",
+    "answers": [
+      [
+        "about",
+        "of"
+      ]
+    ]
+  },
+  {
+    "id": 38,
+    "sentence": "They accused the criminal {{0}} robbery.",
+    "answers": [
+      [
+        "of"
+      ]
+    ]
+  },
+  {
+    "id": 39,
+    "sentence": "Newman succeeded {{0}} becoming a good actor.",
+    "answers": [
+      [
+        "in"
+      ]
+    ]
+  },
+  {
+    "id": 40,
+    "sentence": "That shelter protects the animals {{0}} the rain.",
+    "answers": [
+      [
+        "from"
+      ]
+    ]
+  },
+  {
+    "id": 41,
+    "sentence": "You must apply {{0}} the job immediately.",
+    "answers": [
+      [
+        "for"
+      ]
+    ]
+  },
+  {
+    "id": 42,
+    "sentence": "Three convicts escaped {{0}} that prison.",
+    "answers": [
+      [
+        "from"
+      ]
+    ]
+  },
+  {
+    "id": 43,
+    "sentence": "I prefer tea {{0}} coffee.",
+    "answers": [
+      [
+        "to"
+      ]
+    ]
+  },
+  {
+    "id": 44,
+    "sentence": "The tadpoles in the lake have changed {{0}} frogs.",
+    "answers": [
+      [
+        "into"
+      ]
+    ]
+  },
+  {
+    "id": 45,
+    "sentence": "It is obligatory to attend {{0}}to lessons.",
+    "answers": [
+      []
+    ]
+  },
+  {
+    "id": 46,
+    "sentence": "The miners fight {{0}} better work conditions.",
+    "answers": [
+      [
+        "for"
+      ]
+    ]
+  },
+  {
+    "id": 47,
+    "sentence": "Black people fight {{0}} white people in South Africa.",
+    "answers": [
+      [
+        "against"
+      ]
+    ]
+  },
+  {
+    "id": 48,
+    "sentence": "Most of Cela’s novels have been translated {{0}} Japanese.",
+    "answers": [
+      [
+        "into"
+      ]
+    ]
+  },
+  {
+    "id": 49,
+    "sentence": "I was introduced {{0}} your sister at the party.",
+    "answers": [
+      [
+        "to"
+      ]
+    ]
+  },
+  {
+    "id": 50,
+    "sentence": "I feel sorry {{0}} Samuel. He is always unlucky.",
+    "answers": [
+      [
+        "for"
+      ]
+    ]
+  },
+  {
+    "id": 51,
+    "sentence": "She is proud {{0}} her house.",
+    "answers": [
+      [
+        "of"
+      ]
+    ]
+  },
+  {
+    "id": 52,
+    "sentence": "He is satisfied {{0}} his new job.",
+    "answers": [
+      [
+        "with"
+      ]
+    ]
+  },
+  {
+    "id": 53,
+    "sentence": "He is ashamed {{0}} his humble origins.",
+    "answers": [
+      [
+        "of"
+      ]
+    ]
+  },
+  {
+    "id": 54,
+    "sentence": "His father was very angry {{0}} him.",
+    "answers": [
+      [
+        "with"
+      ]
+    ]
+  },
+  {
+    "id": 55,
+    "sentence": "I am not responsible {{0}} what my brother does.",
+    "answers": [
+      [
+        "for"
+      ]
+    ]
+  },
+  {
+    "id": 56,
+    "sentence": "The secretary apologised {{0}} her mistake {{1}} the boss.",
+    "answers": [
+      [
+        "for"
+      ],
+      [
+        "to"
+      ]
+    ]
+  },
+  {
+    "id": 57,
+    "sentence": "A bus ran {{0}} a car, and two people were injured.",
+    "answers": [
+      [
+        "into"
+      ]
+    ]
+  },
+  {
+    "id": 58,
+    "sentence": "I am keen {{0}} classical music.",
+    "answers": [
+      [
+        "on"
+      ]
+    ]
+  },
+  {
+    "id": 59,
+    "sentence": "I am fond {{0}} pop music.",
+    "answers": [
+      [
+        "of"
+      ]
+    ]
+  },
+  {
+    "id": 60,
+    "sentence": "The policeman went {{0}} duty at 8 a.m.",
+    "answers": [
+      [
+        "on"
+      ]
+    ]
+  },
+  {
+    "id": 61,
+    "sentence": "He is able {{0}} play tennis; he is capable {{1}} playing tennis.",
+    "answers": [
+      [
+        "to"
+      ],
+      [
+        "of"
+      ]
+    ]
+  }
+]
