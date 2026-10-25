@@ -1,436 +1,1005 @@
 <!-- made by AI -->
 <!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8" />
-<title>Irregular verbs</title>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
-<link rel="icon" type="image/x-icon" href="favicon.png" />
-<style>
-  body {
-    font-family: 'Montserrat', sans-serif;
-    background-color: #f5f7fa;
-    margin: 40px;
-    text-align: center;
-    color: #333;
-  }
-  h1 {
-    text-align: center;
-    font-weight: 600;
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-  }
-  #exerciseContainer {
-    display: none;
-    margin-top: 20px;
-    text-align: left;
-    max-width: 450px;
-    margin-left: auto;
-    margin-right: auto;
-    background: white;
-    padding: 40px 70px 40px 40px;
-    border-radius: 12px;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-    min-height: 50px;
-  }
-  #errorMessage {
-    color: #dc3545;
-    font-weight: 600;
-    font-size: 1.5rem;
-    display: none;
-    margin-bottom: 20px;
-  }
-  #retryBtn {
-    display: none;
-    margin-top: 10px;
-  }
-  .form-group {
-    margin-bottom: 30px;
-  }
-  label {
-    display: block;
-    font-weight: 600;
-    margin-bottom: 6px;
-    color: #222;
-  }
-  input[type="text"] {
-    width: 100%;
-    padding: 10px 14px;
-    font-size: 16px;
-    border: 2px solid #ddd;
-    border-radius: 8px;
-    transition: border-color 0.3s ease;
-  }
-  input[type="text"]:focus {
-    outline: none;
-    border-color: #5b9bd5;
-    box-shadow: 0 0 6px #99bbff;
-  }
-  input.correct {
-    background-color: #d4edda;
-    border-color: #28a745;
-    color: #155724;
-    font-weight: 600;
-  }
-  input.incorrect {
-    background-color: #f8d7da;
-    border-color: #dc3545;
-    color: #721c24;
-    font-weight: 600;
-  }
-  #message {
-    font-size: 1.5rem;
-    margin-top: 25px;
-    font-weight: 600;
-  }
-  #message.green {
-    color: #28a745;
-  }
-  #message.red {
-    color: #dc3545;
-  }
-  button {
-    margin-top: 20px;
-    background-color: #5b9bd5;
-    color: white;
-    border: none;
-    border-radius: 12px;
-    padding: 12px 30px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    box-shadow: 0 5px 10px rgba(91,155,213,0.3);
-    transition: background-color 0.25s ease, transform 0.15s ease;
-  }
-  button:disabled {
-    background-color: #a4b8d5;
-    cursor: not-allowed;
-    box-shadow: none;
-  }
-  button:hover:not(:disabled) {
-    background-color: #4178d1;
-    transform: translateY(-2px);
-  }
-  button:active:not(:disabled) {
-    transform: translateY(1px);
-  }
-  #checkBtn, #nextBtn {
-  margin-top: 0px; /* subir 15px respecto al original */
-  }
+<html lang="en">
 
-</style>
+<head>
+  <meta charset="UTF-8" />
+  <title>Irregular verbs</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/x-icon" href="favicon.png" />
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #f5f7fa;
+      margin: 40px;
+      text-align: center;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      font-weight: 600;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    #exerciseContainer {
+      display: none;
+      margin-top: 20px;
+      text-align: left;
+      max-width: 450px;
+      margin-left: auto;
+      margin-right: auto;
+      background: white;
+      padding: 40px 70px 40px 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      min-height: 50px;
+    }
+
+    #errorMessage {
+      color: #dc3545;
+      font-weight: 600;
+      font-size: 1.5rem;
+      display: none;
+      margin-bottom: 20px;
+    }
+
+    #retryBtn {
+      display: none;
+      margin-top: 10px;
+    }
+
+    .form-group {
+      margin-bottom: 30px;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: #222;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px 14px;
+      font-size: 16px;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      transition: border-color 0.3s ease;
+      box-sizing: border-box;
+    }
+
+    input[type="text"]:focus {
+      outline: none;
+      border-color: #5b9bd5;
+      box-shadow: 0 0 6px #99bbff;
+    }
+
+    input.correct {
+      background-color: #d4edda;
+      border-color: #28a745;
+      color: #155724;
+      font-weight: 600;
+    }
+
+    input.incorrect {
+      background-color: #f8d7da;
+      border-color: #dc3545;
+      color: #721c24;
+      font-weight: 600;
+    }
+
+    #message {
+      font-size: 1.5rem;
+      margin-top: 25px;
+      font-weight: 600;
+    }
+
+    #message.green {
+      color: #28a745;
+    }
+
+    #message.red {
+      color: #dc3545;
+    }
+
+    button {
+      margin-top: 20px;
+      background-color: #5b9bd5;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      padding: 12px 30px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 5px 10px rgba(91, 155, 213, 0.3);
+      transition: background-color 0.25s ease, transform 0.15s ease;
+    }
+
+    button:disabled {
+      background-color: #a4b8d5;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+
+    button:hover:not(:disabled) {
+      background-color: #4178d1;
+      transform: translateY(-2px);
+    }
+
+    button:active:not(:disabled) {
+      transform: translateY(1px);
+    }
+
+    #checkBtn,
+    #nextBtn {
+      margin-top: 12px;
+    }
+
+    #prepositionCheckBtn,
+    #prepositionNextBtn {
+      margin-top: 12px;
+    }
+
+    #prepositionSentence {
+      font-size: 1.1rem;
+      line-height: 2.5;
+    }
+
+    input.preposition-input {
+      width: 100px;
+      max-width: 35vw;
+      display: inline-block;
+      vertical-align: middle;
+      margin: 0 4px;
+      padding: 6px 8px;
+      box-sizing: border-box;
+    }
+
+    #prepositionMessage {
+      font-size: 1.5rem;
+      margin-top: 25px;
+      font-weight: 600;
+    }
+
+    #prepositionMessage.green {
+      color: #28a745;
+    }
+
+    #prepositionMessage.red {
+      color: #dc3545;
+    }
+
+    .solution-btn {
+      margin-left: 8px;
+      margin-top: 0;
+      padding: 7px 14px;
+      font-size: 13px;
+      border-radius: 8px;
+    }
+
+    input.solution {
+      background-color: #dbeafe;
+      border-color: #3b82f6;
+      color: #1d4ed8;
+      font-weight: 600;
+    }
+
+    body.returning-to-menu #exerciseContainer {
+      visibility: hidden;
+    }
+
+    .feedback-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 25px;
+      flex-wrap: wrap;
+    }
+
+    #message,
+    #prepositionMessage {
+      display: block;
+      margin: 0;
+    }
+
+    .feedback-row .solution-btn {
+      margin: 0;
+    }
+  </style>
 </head>
+
 <body>
 
-<header>
-  <h1 id="pageTitle">IRREGULAR VERBS</h1>
-  <h2 id="subTitle" style="font-weight: 400; color: #555; margin-top: -12px; font-size: 1.3rem;"></h2>
-  <button id="backToMenuBtn" style="display:none; margin-top: 1px;">Menu</button>
+  <header>
+    <h1 id="pageTitle">IRREGULAR VERBS</h1>
+    <h2 id="subTitle" style="font-weight: 400; color: #555; margin-top: -12px; font-size: 1.3rem;"></h2>
+    <button id="backToMenuBtn" style="display:none; margin-top: 1px;">Menu</button>
 
-<div id="startBtns">
-  <button id="btn1">be → learn</button>
-  <button id="btn2">leave → write</button>
-  <button id="btn3">All verbs</button>
-</div>
-
-
-<div id="exerciseContainer" aria-live="polite">
-  <div id="errorMessage">Error loading verbs list</div>
-  <button id="retryBtn">Retry</button>
-  <div id="exerciseContent">
-    <div class="form-group">
-      <label for="infinitive">INFINITIVE</label>
-      <input type="text" id="infinitive" aria-describedby="infinitiveLabel" autocomplete="off"/>
+    <div id="startBtns">
+      <button id="btn1">be → learn</button>
+      <button id="btn2">leave → write</button>
+      <button id="btn3">All verbs</button>
     </div>
 
-    <div class="form-group">
-      <label for="pastSimple">PAST SIMPLE</label>
-      <input type="text" id="pastSimple" aria-describedby="pastSimpleLabel" autocomplete="off"/>
+    <h1 id="prepositionsTitle" style="margin-top:40px;">
+      PREPOSITIONS
+    </h1>
+
+    <div id="prepositionStartBtns">
+      <button id="btnVerbsPrepositions">
+        Verbs + Prepositions
+      </button>
+
+      <button id="btnAdjectivesPrepositions">
+        Adjectives + Prepositions
+      </button>
     </div>
 
-    <div class="form-group">
-      <label for="pastParticiple">PAST PARTICIPLE</label>
-      <input type="text" id="pastParticiple" aria-describedby="pastParticipleLabel" autocomplete="off"/>
+
+    <div id="exerciseContainer" aria-live="polite">
+      <div id="errorMessage">Error loading verbs list</div>
+      <button id="retryBtn">Retry</button>
+      <div id="exerciseContent">
+        <div class="form-group">
+          <label for="infinitive">INFINITIVE</label>
+          <input type="text" id="infinitive" aria-describedby="infinitiveLabel" autocomplete="off" />
+        </div>
+
+        <div class="form-group">
+          <label for="pastSimple">PAST SIMPLE</label>
+          <input type="text" id="pastSimple" aria-describedby="pastSimpleLabel" autocomplete="off" />
+        </div>
+
+        <div class="form-group">
+          <label for="pastParticiple">PAST PARTICIPLE</label>
+          <input type="text" id="pastParticiple" aria-describedby="pastParticipleLabel" autocomplete="off" />
+        </div>
+
+        <button id="checkBtn">Check</button>
+        <button id="nextBtn">Next</button>
+
+        <div class="feedback-row">
+          <div id="message" role="alert"></div>
+
+          <button id="solutionBtn" class="solution-btn" style="display:none;">
+            Solution
+          </button>
+        </div>
+      </div>
+
+      <div id="prepositionExerciseContent" style="display:none;">
+
+        <div id="prepositionSentence"></div>
+
+        <button id="prepositionCheckBtn">Check</button>
+
+        <button id="prepositionNextBtn" style="display:none;">
+          Next
+        </button>
+
+        <div class="feedback-row">
+          <div id="prepositionMessage" role="alert"></div>
+
+          <button id="prepositionSolutionBtn" class="solution-btn" style="display:none;">
+            Solution
+          </button>
+        </div>
+      </div>
     </div>
 
-    <button id="checkBtn">Check</button>
-    <button id="nextBtn">Next</button>
-    <div id="message" role="alert"></div>
-  </div>
-</div>
+    <script>
+      let verbs = [];
+      let currentVerb = null;
+      let lockedForm = "";
+      let prepositionQuestions = [];
+      let currentPrepositionQuestion = null;
 
-<script>
-let verbs = [];
-let currentVerb = null;
-let lockedForm = "";
+      let verbUserAnswers = {};
+      let prepositionUserAnswers = {};
+      let verbSolutionShown = false;
+      let prepositionSolutionShown = false;
 
-function getRandomVerb() {
-  const index = Math.floor(Math.random() * verbs.length);
-  return verbs[index];
-}
-
-function pickForm(verb) {
-  const forms = ["infinitive", "pastSimple", "pastParticiple"];
-  let form = forms[Math.floor(Math.random() * forms.length)];
-  if (verb.infinitive === "can" && form === "pastParticiple") {
-    const altForms = forms.filter(f => f !== "pastParticiple");
-    form = altForms[Math.floor(Math.random() * altForms.length)];
-  }
-  if (form === "pastParticiple" && verb.pastParticiple === null) {
-    const altForms = forms.filter(f => f !== "pastParticiple");
-    form = altForms[Math.floor(Math.random() * altForms.length)];
-  }
-  return form;
-}
-
-function loadVerb() {
-  document.getElementById("message").textContent = "";
-  ['infinitive', 'pastSimple', 'pastParticiple'].forEach(id => {
-    const input = document.getElementById(id);
-    input.value = "";
-    input.disabled = false;
-    input.className = "";
-  });
-  document.getElementById("nextBtn").style.display = "none";
-  document.getElementById("checkBtn").disabled = false;
-
-  currentVerb = getRandomVerb();
-
-  // Elegimos el campo de la pregunta sin null
-  let form = pickForm(currentVerb);
-
-  // Si el campo es null, no permitas escribir ni colorear
-  if (currentVerb.pastParticiple === null) {
-    document.getElementById("pastParticiple").disabled = true;
-    document.getElementById("pastParticiple").className = "";
-  }
-  if (currentVerb.pastSimple === null) {
-    document.getElementById("pastSimple").disabled = true;
-    document.getElementById("pastSimple").className = "";
-  }
-  if (currentVerb.infinitive === null) {
-    document.getElementById("infinitive").disabled = true;
-    document.getElementById("infinitive").className = "";
-  }
-
-  // Autocompletar la forma bloqueada como antes
-  if (form === "infinitive") {
-    document.getElementById("infinitive").value = currentVerb.infinitive;
-    document.getElementById("infinitive").disabled = true;
-  } else if (form === "pastSimple") {
-    document.getElementById("pastSimple").value = Array.isArray(currentVerb.pastSimple) ? currentVerb.pastSimple[0] : currentVerb.pastSimple;
-    document.getElementById("pastSimple").disabled = true;
-  } else if (form === "pastParticiple") {
-    // Si es null no lo pongas, solo bloquea; si no es null autocompleta como siempre
-    if (currentVerb.pastParticiple !== null) {
-      document.getElementById("pastParticiple").value = Array.isArray(currentVerb.pastParticiple) ? currentVerb.pastParticiple[0] : currentVerb.pastParticiple;
-      document.getElementById("pastParticiple").disabled = true;
-    } else {
-      document.getElementById("pastParticiple").value = "";
-      document.getElementById("pastParticiple").disabled = true;
-    }
-  }
-
-  lockedForm = form;
-}
-
-function isAnswerCorrect(userAnswer, validAnswers) {
-  if (!userAnswer) return false;
-  userAnswer = userAnswer.toLowerCase().trim();
-  const userParts = userAnswer.split("/").map(s => s.trim()).filter(s => s.length > 0);
-  const validParts = Array.isArray(validAnswers) ? validAnswers.map(s => s.toLowerCase().trim()) : [validAnswers.toLowerCase().trim()];
-  if (userParts.length === 1) {
-    return validParts.includes(userParts[0]);
-  }
-  for (const p of userParts) {
-    if (!validParts.includes(p)) return false;
-  }
-  return true;
-}
-
-document.getElementById("checkBtn").addEventListener("click", () => {
-  let correctCount = 0;
-  let totalCount = 0;
-
-  const userInf = document.getElementById("infinitive").value.trim();
-  const userPastS = document.getElementById("pastSimple").value.trim();
-  const userPastP = document.getElementById("pastParticiple").value.trim();
-
-  if (lockedForm !== "infinitive" && currentVerb.infinitive !== null) {
-    totalCount++;
-    const input = document.getElementById("infinitive");
-    if (isAnswerCorrect(userInf, currentVerb.infinitive)) {
-      input.className = "correct";
-      input.disabled = true;
-      correctCount++;
-    } else {
-      input.className = "incorrect";
-      input.disabled = false;
-    }
-  } else {
-    document.getElementById("infinitive").className = "";
-  }
-
-  if (lockedForm !== "pastSimple" && currentVerb.pastSimple !== null) {
-    totalCount++;
-    const validPastS = Array.isArray(currentVerb.pastSimple) ? currentVerb.pastSimple : [currentVerb.pastSimple];
-    const input = document.getElementById("pastSimple");
-    if (isAnswerCorrect(userPastS, validPastS)) {
-      input.className = "correct";
-      input.disabled = true;
-      correctCount++;
-    } else {
-      input.className = "incorrect";
-      input.disabled = false;
-    }
-  } else {
-    document.getElementById("pastSimple").className = "";
-  }
-
-  if (lockedForm !== "pastParticiple" && currentVerb.pastParticiple !== null) {
-    totalCount++;
-    const validPastP = Array.isArray(currentVerb.pastParticiple) ? currentVerb.pastParticiple : [currentVerb.pastParticiple];
-    const input = document.getElementById("pastParticiple");
-    if (isAnswerCorrect(userPastP, validPastP)) {
-      input.className = "correct";
-      input.disabled = true;
-      correctCount++;
-    } else {
-      input.className = "incorrect";
-      input.disabled = false;
-    }
-  } else {
-    document.getElementById("pastParticiple").className = "";
-  }
-
-  const message = document.getElementById("message");
-  if (correctCount === totalCount && totalCount > 0) {
-    message.textContent = "Good job!";
-    message.className = "green";
-    document.getElementById("nextBtn").style.display = "inline";
-    document.getElementById("checkBtn").disabled = true;
-  } else {
-    message.textContent = "Wrong answer";
-    message.className = "red";
-    document.getElementById("nextBtn").style.display = "none";
-    document.getElementById("checkBtn").disabled = false;
-  }
-});
-
-
-document.getElementById("nextBtn").addEventListener("click", () => {
-  loadVerb();
-});
-
-const btnMap = {
-  btn1: "verbs.json",
-  btn2: "verbs2.json",
-  btn3: "all.json"
-};
-
-async function loadVerbsFrom(file) {
-  try {
-    const response = await fetch(file);
-    if (!response.ok) throw new Error('HTTP error ' + response.status);
-    verbs = await response.json();
-    return true;
-  } catch (error) {
-    console.error('Error al cargar ' + file + ':', error);
-    return false;
-  }
-}
-
-const subtitles = {
-  btn1: "be → learn",
-  btn2: "leave → write",
-  btn3: "All verbs"
-};
-
-Object.keys(btnMap).forEach(btnId => {
-  document.getElementById(btnId).addEventListener("click", async () => {
-    const success = await loadVerbsFrom(btnMap[btnId]);
-    document.getElementById("startBtns").style.display = "none";
-    document.getElementById("exerciseContainer").style.display = "block";
-    document.getElementById("backToMenuBtn").style.display = "inline-block";
-
-    // Aquí actualizas el subtítulo dinámicamente
-    document.getElementById("subTitle").textContent = subtitles[btnId] || "";
-
-    if (!success) {
-      document.getElementById("exerciseContent").style.display = "none";
-      document.getElementById("errorMessage").style.display = "block";
-      document.getElementById("retryBtn").style.display = "inline-block";
-    } else {
-      document.getElementById("errorMessage").style.display = "none";
-      document.getElementById("retryBtn").style.display = "none";
-      document.getElementById("exerciseContent").style.display = "block";
-      loadVerb();
-    }
-  });
-});
-
-
-
-document.getElementById("retryBtn").addEventListener("click", () => {
-  window.location.reload();
-});
-
-const checkBtn = document.getElementById("checkBtn");
-
-['infinitive', 'pastSimple', 'pastParticiple'].forEach(id => {
-  const input = document.getElementById(id);
-  input.addEventListener("keydown", (event) => {
-    if (event.key === "Enter") {
-      event.preventDefault();
-      if (!checkBtn.disabled) {
-        checkBtn.click();
+      function getRandomVerb() {
+        const index = Math.floor(Math.random() * verbs.length);
+        return verbs[index];
       }
-    }
-  });
-});
-document.getElementById("backToMenuBtn").addEventListener("click", () => {
-  document.getElementById("exerciseContainer").style.display = "none";
-  document.getElementById("startBtns").style.display = "block";
-  document.getElementById("subTitle").textContent = "";
-  document.getElementById("backToMenuBtn").style.display = "none";
-});
+
+      function pickForm(verb) {
+        const forms = ["infinitive", "pastSimple", "pastParticiple"];
+        let form = forms[Math.floor(Math.random() * forms.length)];
+        if (verb.infinitive === "can" && form === "pastParticiple") {
+          const altForms = forms.filter(f => f !== "pastParticiple");
+          form = altForms[Math.floor(Math.random() * altForms.length)];
+        }
+        if (form === "pastParticiple" && verb.pastParticiple === null) {
+          const altForms = forms.filter(f => f !== "pastParticiple");
+          form = altForms[Math.floor(Math.random() * altForms.length)];
+        }
+        return form;
+      }
+
+      function loadVerb() {
+        verbUserAnswers = {};
+        verbSolutionShown = false;
+
+        const solutionBtn = document.getElementById("solutionBtn");
+        solutionBtn.style.display = "none";
+        solutionBtn.textContent = "Solution";
+
+        document.getElementById("message").textContent = "";
+        ['infinitive', 'pastSimple', 'pastParticiple'].forEach(id => {
+          const input = document.getElementById(id);
+          input.value = "";
+          input.disabled = false;
+          input.className = "";
+        });
+        document.getElementById("nextBtn").style.display = "none";
+        document.getElementById("checkBtn").disabled = false;
+
+        currentVerb = getRandomVerb();
+
+        // Elegimos el campo de la pregunta sin null
+        let form = pickForm(currentVerb);
+
+        // Si el campo es null, no permitas escribir ni colorear
+        if (currentVerb.pastParticiple === null) {
+          document.getElementById("pastParticiple").disabled = true;
+          document.getElementById("pastParticiple").className = "";
+        }
+        if (currentVerb.pastSimple === null) {
+          document.getElementById("pastSimple").disabled = true;
+          document.getElementById("pastSimple").className = "";
+        }
+        if (currentVerb.infinitive === null) {
+          document.getElementById("infinitive").disabled = true;
+          document.getElementById("infinitive").className = "";
+        }
+
+        // Autocompletar la forma bloqueada como antes
+        if (form === "infinitive") {
+          document.getElementById("infinitive").value = currentVerb.infinitive;
+          document.getElementById("infinitive").disabled = true;
+        } else if (form === "pastSimple") {
+          document.getElementById("pastSimple").value = Array.isArray(currentVerb.pastSimple) ? currentVerb.pastSimple[0] : currentVerb.pastSimple;
+          document.getElementById("pastSimple").disabled = true;
+        } else if (form === "pastParticiple") {
+          // Si es null no lo pongas, solo bloquea; si no es null autocompleta como siempre
+          if (currentVerb.pastParticiple !== null) {
+            document.getElementById("pastParticiple").value = Array.isArray(currentVerb.pastParticiple) ? currentVerb.pastParticiple[0] : currentVerb.pastParticiple;
+            document.getElementById("pastParticiple").disabled = true;
+          } else {
+            document.getElementById("pastParticiple").value = "";
+            document.getElementById("pastParticiple").disabled = true;
+          }
+        }
+
+        lockedForm = form;
+      }
+
+      function isAnswerCorrect(userAnswer, validAnswers) {
+        if (!userAnswer) return false;
+        userAnswer = userAnswer.toLowerCase().trim();
+        const userParts = userAnswer.split("/").map(s => s.trim()).filter(s => s.length > 0);
+        const validParts = Array.isArray(validAnswers) ? validAnswers.map(s => s.toLowerCase().trim()) : [validAnswers.toLowerCase().trim()];
+        if (userParts.length === 1) {
+          return validParts.includes(userParts[0]);
+        }
+        for (const p of userParts) {
+          if (!validParts.includes(p)) return false;
+        }
+        return true;
+      }
+
+      document.getElementById("checkBtn").addEventListener("click", () => {
+        let correctCount = 0;
+        let totalCount = 0;
+
+        const fields = [
+          {
+            id: "infinitive",
+            form: "infinitive",
+            value: document.getElementById("infinitive").value.trim()
+          },
+          {
+            id: "pastSimple",
+            form: "pastSimple",
+            value: document.getElementById("pastSimple").value.trim()
+          },
+          {
+            id: "pastParticiple",
+            form: "pastParticiple",
+            value: document.getElementById("pastParticiple").value.trim()
+          }
+        ];
+
+        fields.forEach(field => {
+          const input = document.getElementById(field.id);
+
+          if (
+            lockedForm === field.form ||
+            currentVerb[field.form] === null
+          ) {
+            input.className = "";
+            return;
+          }
+
+          totalCount++;
+
+          const validAnswers = Array.isArray(currentVerb[field.form])
+            ? currentVerb[field.form]
+            : [currentVerb[field.form]];
+
+          verbUserAnswers[field.id] = field.value;
+
+          if (isAnswerCorrect(field.value, validAnswers)) {
+            input.className = "correct";
+            input.disabled = true;
+            correctCount++;
+          } else {
+            input.className = "incorrect";
+            input.disabled = false;
+          }
+        });
+
+        const message = document.getElementById("message");
+        const solutionBtn = document.getElementById("solutionBtn");
+        const nextBtn = document.getElementById("nextBtn");
+        const checkBtn = document.getElementById("checkBtn");
+
+        if (correctCount === totalCount && totalCount > 0) {
+          message.textContent = "Good job!";
+          message.className = "green";
+
+          nextBtn.style.display = "inline";
+          checkBtn.disabled = true;
+          solutionBtn.style.display = "none";
+
+        } else {
+          message.textContent = "Wrong answer";
+          message.className = "red";
+
+          nextBtn.style.display = "none";
+          checkBtn.disabled = false;
+
+          solutionBtn.style.display = "inline-block";
+          solutionBtn.textContent = "Solution";
+          verbSolutionShown = false;
+        }
+      });
+
+      document.getElementById("solutionBtn").addEventListener("click", () => {
+        const solutionBtn = document.getElementById("solutionBtn");
+
+        if (!verbSolutionShown) {
+          const fields = [
+            {
+              id: "infinitive",
+              form: "infinitive"
+            },
+            {
+              id: "pastSimple",
+              form: "pastSimple"
+            },
+            {
+              id: "pastParticiple",
+              form: "pastParticiple"
+            }
+          ];
+
+          fields.forEach(field => {
+            const input = document.getElementById(field.id);
+
+            if (
+              lockedForm === field.form ||
+              currentVerb[field.form] === null
+            ) {
+              return;
+            }
+
+            if (input.classList.contains("incorrect")) {
+              const answer = Array.isArray(currentVerb[field.form])
+                ? currentVerb[field.form][0]
+                : currentVerb[field.form];
+
+              input.value = answer;
+              input.className = "solution";
+              input.disabled = true;
+            }
+          });
+
+          document.getElementById("nextBtn").style.display = "inline";
+
+          solutionBtn.textContent = "Back";
+          verbSolutionShown = true;
+
+        } else {
+          const fields = [
+            "infinitive",
+            "pastSimple",
+            "pastParticiple"
+          ];
+
+          fields.forEach(id => {
+            const input = document.getElementById(id);
+
+            if (input.classList.contains("solution")) {
+              input.value = verbUserAnswers[id] || "";
+              input.className = "incorrect";
+              input.disabled = false;
+            }
+          });
+
+          solutionBtn.textContent = "Solution";
+          verbSolutionShown = false;
+        }
+      });
 
 
-</script>
+      document.getElementById("nextBtn").addEventListener("click", () => {
+        loadVerb();
+      });
 
-<div id="disclaimer" style="font-family: 'Montserrat', sans-serif; font-size: 11px; color: #ff6161; position: fixed; bottom: 24px; right: 12px; max-width: 270px; text-align: right; z-index: 1000;">
-  DISCLAMER: made with AI, may contain errors.
-</div>
+      const btnMap = {
+        btn1: "verbs.json",
+        btn2: "verbs2.json",
+        btn3: "all.json"
+      };
 
-<div id="attribution">
-  <a href="https://www.flaticon.com/free-icons/england" title="england icons" target="_blank" rel="noopener noreferrer">
-    England icons created by Freepik - Flaticon
-  </a>
-</div>
+      async function loadVerbsFrom(file) {
+        try {
+          const response = await fetch(file);
+          if (!response.ok) throw new Error('HTTP error ' + response.status);
+          verbs = await response.json();
+          return true;
+        } catch (error) {
+          console.error('Error al cargar ' + file + ':', error);
+          return false;
+        }
+      }
 
-<style>
-  #attribution {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 11px;
-    color: #555;
-    position: fixed;
-    bottom: 8px;
-    right: 12px;
-    max-width: 270px;
-    text-align: right;
-    z-index: 1000;
-  }
-  #attribution a {
-    color: #555;
-    text-decoration: none;
-  }
-  #attribution a:hover {
-    text-decoration: underline;
-  }
-</style>
+      const subtitles = {
+        btn1: "be → learn",
+        btn2: "leave → write",
+        btn3: "All verbs"
+      };
+
+      Object.keys(btnMap).forEach(btnId => {
+        document.getElementById(btnId).addEventListener("click", async () => {
+          const success = await loadVerbsFrom(btnMap[btnId]);
+          document.getElementById("startBtns").style.display = "none";
+          document.getElementById("pageTitle").textContent =
+            "IRREGULAR VERBS";
+
+          document.getElementById("prepositionsTitle").style.display =
+            "none";
+
+          document.getElementById("prepositionStartBtns").style.display =
+            "none";
+
+          document.getElementById("prepositionExerciseContent").style.display =
+            "none";
+          document.getElementById("exerciseContainer").style.display = "block";
+          document.getElementById("backToMenuBtn").style.display = "inline-block";
+
+          // Aquí actualizas el subtítulo dinámicamente
+          document.getElementById("subTitle").textContent = subtitles[btnId] || "";
+
+          if (!success) {
+            document.getElementById("exerciseContent").style.display = "none";
+            document.getElementById("errorMessage").style.display = "block";
+            document.getElementById("retryBtn").style.display = "inline-block";
+          } else {
+            document.getElementById("errorMessage").style.display = "none";
+            document.getElementById("retryBtn").style.display = "none";
+            document.getElementById("exerciseContent").style.display = "block";
+            loadVerb();
+          }
+        });
+      });
+
+      async function loadPrepositionQuestions(file) {
+
+
+        try {
+          const response = await fetch(file);
+
+          if (!response.ok) {
+            throw new Error("HTTP error " + response.status);
+          }
+
+          const data = await response.json();
+
+          if (!Array.isArray(data) || data.length === 0) {
+            throw new Error("Invalid questions list");
+          }
+
+          prepositionQuestions = data;
+          return true;
+
+        } catch (error) {
+          console.error("Error loading " + file + ":", error);
+          return false;
+        }
+      }
+
+
+      function loadPrepositionQuestion() {
+
+        prepositionUserAnswers = {};
+        prepositionSolutionShown = false;
+
+        const solutionBtn = document.getElementById("prepositionSolutionBtn");
+        solutionBtn.style.display = "none";
+        solutionBtn.textContent = "Solution";
+
+        currentPrepositionQuestion =
+          prepositionQuestions[
+          Math.floor(Math.random() * prepositionQuestions.length)
+          ];
+
+        const sentenceEl = document.getElementById("prepositionSentence");
+        const message = document.getElementById("prepositionMessage");
+        const checkBtn = document.getElementById("prepositionCheckBtn");
+        const nextBtn = document.getElementById("prepositionNextBtn");
+
+        sentenceEl.replaceChildren();
+
+        message.textContent = "";
+        message.className = "";
+
+        checkBtn.disabled = false;
+        nextBtn.style.display = "none";
+
+        const sentence = currentPrepositionQuestion.sentence;
+        const pattern = /\{\{(\d+)\}\}/g;
+
+        let lastIndex = 0;
+        let match;
+        const inputs = [];
+
+        while ((match = pattern.exec(sentence)) !== null) {
+          sentenceEl.appendChild(
+            document.createTextNode(
+              sentence.slice(lastIndex, match.index)
+            )
+          );
+
+          const input = document.createElement("input");
+
+          input.type = "text";
+          input.className = "preposition-input";
+          input.autocomplete = "off";
+          input.dataset.answerIndex = match[1];
+
+          input.setAttribute(
+            "aria-label",
+            "Preposition " + (Number(match[1]) + 1)
+          );
+
+          input.addEventListener("keydown", event => {
+            if (event.key === "Enter") {
+              event.preventDefault();
+
+              if (!checkBtn.disabled) {
+                checkBtn.click();
+              }
+            }
+          });
+
+          sentenceEl.appendChild(input);
+          inputs.push(input);
+
+          lastIndex = pattern.lastIndex;
+        }
+
+        sentenceEl.appendChild(
+          document.createTextNode(sentence.slice(lastIndex))
+        );
+
+        if (inputs.length > 0) {
+          inputs[0].focus();
+        }
+      }
+
+
+      function checkPrepositionAnswers() {
+        const inputs = [
+          ...document.querySelectorAll(
+            "#prepositionSentence .preposition-input"
+          )
+        ];
+
+        const question = currentPrepositionQuestion;
+
+        let allCorrect =
+          inputs.length > 0 &&
+          inputs.length === question.answers.length;
+
+        inputs.forEach(input => {
+          const index = Number(input.dataset.answerIndex);
+          const validAnswers = question.answers[index] || [];
+          const userAnswer = input.dataset.emptyCorrect === "true"
+            ? ""
+            : input.value.trim().toLowerCase();
+
+          if (!input.dataset.emptyCorrect) {
+            prepositionUserAnswers[index] = input.value;
+          }
+
+          let correct;
+
+          if (validAnswers.length === 0) {
+            // Una resposta buida només és correcta si el camp és buit.
+            correct = userAnswer === "";
+          } else {
+            // Accepta qualsevol de les respostes alternatives.
+            correct = validAnswers.some(
+              answer => answer.trim().toLowerCase() === userAnswer
+            );
+          }
+
+          if (correct) {
+            input.className = "preposition-input correct";
+
+            if (validAnswers.length === 0 && userAnswer === "") {
+              input.value = "∅";
+              input.dataset.emptyCorrect = "true";
+            }
+
+            input.disabled = true;
+          } else {
+            input.className = "preposition-input incorrect";
+            input.disabled = false;
+            allCorrect = false;
+          }
+        });
+
+        const message = document.getElementById("prepositionMessage");
+        const checkBtn = document.getElementById("prepositionCheckBtn");
+        const nextBtn = document.getElementById("prepositionNextBtn");
+
+        const solutionBtn = document.getElementById("prepositionSolutionBtn");
+
+        if (allCorrect) {
+          message.textContent = "Good job!";
+          message.className = "green";
+
+          nextBtn.style.display = "inline";
+          checkBtn.disabled = true;
+          solutionBtn.style.display = "none";
+
+        } else {
+          message.textContent = "Wrong answer";
+          message.className = "red";
+
+          nextBtn.style.display = "none";
+          checkBtn.disabled = false;
+
+          solutionBtn.style.display = "inline-block";
+          solutionBtn.textContent = "Solution";
+          prepositionSolutionShown = false;
+        }
+      }
+
+      document.getElementById("prepositionSolutionBtn").addEventListener("click", () => {
+        const solutionBtn = document.getElementById("prepositionSolutionBtn");
+
+        const inputs = [
+          ...document.querySelectorAll(
+            "#prepositionSentence .preposition-input"
+          )
+        ];
+
+        if (!prepositionSolutionShown) {
+
+          inputs.forEach(input => {
+            if (!input.classList.contains("incorrect")) {
+              return;
+            }
+
+            const index = Number(input.dataset.answerIndex);
+            const validAnswers = currentPrepositionQuestion.answers[index] || [];
+
+            if (validAnswers.length === 0) {
+              input.value = "";
+            } else {
+              input.value = validAnswers[0];
+            }
+
+            input.className = "preposition-input solution";
+            input.disabled = true;
+          });
+
+          document.getElementById("prepositionNextBtn").style.display = "inline";
+
+          solutionBtn.textContent = "Back";
+          prepositionSolutionShown = true;
+
+        } else {
+
+          inputs.forEach(input => {
+            if (!input.classList.contains("solution")) {
+              return;
+            }
+
+            const index = Number(input.dataset.answerIndex);
+
+            input.value = prepositionUserAnswers[index] || "";
+            input.className = "preposition-input incorrect";
+            input.disabled = false;
+          });
+
+          solutionBtn.textContent = "Solution";
+          prepositionSolutionShown = false;
+        }
+      });
+
+
+      async function startPrepositionQuiz(file, subtitle) {
+        document.getElementById("pageTitle").textContent = "PREPOSITIONS";
+
+        document.getElementById("startBtns").style.display = "none";
+        document.getElementById("prepositionsTitle").style.display = "none";
+        document.getElementById("prepositionStartBtns").style.display = "none";
+
+        document.getElementById("exerciseContainer").style.display = "block";
+        document.getElementById("backToMenuBtn").style.display = "inline-block";
+        document.getElementById("subTitle").textContent = subtitle;
+
+        document.getElementById("exerciseContent").style.display = "none";
+
+        document.getElementById("errorMessage").textContent =
+          "Error loading questions list";
+
+        document.getElementById("errorMessage").style.display = "none";
+        document.getElementById("retryBtn").style.display = "none";
+
+        document.getElementById("prepositionExerciseContent").style.display =
+          "block";
+
+        const success = await loadPrepositionQuestions(file);
+
+        if (!success) {
+          document.getElementById("prepositionExerciseContent").style.display =
+            "none";
+
+          document.getElementById("errorMessage").style.display = "block";
+          document.getElementById("retryBtn").style.display = "inline-block";
+          return;
+        }
+
+        loadPrepositionQuestion();
+      }
+
+
+      document
+        .getElementById("btnVerbsPrepositions")
+        .addEventListener("click", () => {
+          startPrepositionQuiz(
+            "verbs-prepositions.json",
+            "Verbs + Prepositions"
+          );
+        });
+
+
+      document
+        .getElementById("btnAdjectivesPrepositions")
+        .addEventListener("click", () => {
+          startPrepositionQuiz(
+            "adjectives-prepositions.json",
+            "Adjectives + Prepositions"
+          );
+        });
+
+
+      document
+        .getElementById("prepositionCheckBtn")
+        .addEventListener("click", checkPrepositionAnswers);
+
+
+      document
+        .getElementById("prepositionNextBtn")
+        .addEventListener("click", loadPrepositionQuestion);
+
+
+      document.getElementById("retryBtn").addEventListener("click", () => {
+        window.location.reload();
+      });
+
+      const checkBtn = document.getElementById("checkBtn");
+
+      ['infinitive', 'pastSimple', 'pastParticiple'].forEach(id => {
+        const input = document.getElementById(id);
+        input.addEventListener("keydown", (event) => {
+          if (event.key === "Enter") {
+            event.preventDefault();
+            if (!checkBtn.disabled) {
+              checkBtn.click();
+            }
+          }
+        });
+      });
+
+      document.getElementById("backToMenuBtn").addEventListener("click", () => {
+        document.body.classList.add("returning-to-menu");
+
+        document.getElementById("exerciseContent").style.display = "none";
+        document.getElementById("prepositionExerciseContent").style.display = "none";
+
+        document.getElementById("exerciseContainer").style.display = "none";
+
+        document.getElementById("startBtns").style.display = "block";
+        document.getElementById("subTitle").textContent = "";
+        document.getElementById("backToMenuBtn").style.display = "none";
+
+        document.getElementById("pageTitle").textContent =
+          "IRREGULAR VERBS";
+
+        document.getElementById("prepositionsTitle").style.display =
+          "block";
+
+        document.getElementById("prepositionStartBtns").style.display =
+          "block";
+
+        document.getElementById("errorMessage").style.display =
+          "none";
+
+        document.getElementById("retryBtn").style.display =
+          "none";
+
+        document.getElementById("solutionBtn").style.display =
+          "none";
+
+        document.getElementById("prepositionSolutionBtn").style.display =
+          "none";
+
+        requestAnimationFrame(() => {
+          document.body.classList.remove("returning-to-menu");
+        });
+      });
+
+
+    </script>
+
+    <div id="disclaimer"
+      style="font-family: 'Montserrat', sans-serif; font-size: 11px; color: #ff6161; position: fixed; bottom: 24px; right: 12px; max-width: 270px; text-align: right; z-index: 1000;">
+      DISCLAMER: made with AI, may contain errors.
+    </div>
+
+    <div id="attribution">
+      <a href="https://www.flaticon.com/free-icons/england" title="england icons" target="_blank"
+        rel="noopener noreferrer">
+        England icons created by Freepik - Flaticon
+      </a>
+    </div>
+
+    <style>
+      #attribution {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 11px;
+        color: #555;
+        position: fixed;
+        bottom: 8px;
+        right: 12px;
+        max-width: 270px;
+        text-align: right;
+        z-index: 1000;
+      }
+
+      #attribution a {
+        color: #555;
+        text-decoration: none;
+      }
+
+      #attribution a:hover {
+        text-decoration: underline;
+      }
+    </style>
 
 </body>
+
 </html>
-
-
-

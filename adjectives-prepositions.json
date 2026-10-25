@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "sentence": "“What are you so excited {{0}}?” “We’re going on holiday tomorrow.”",
+    "sentence": "“What are you so excited {{0}}?”\n“We’re going on holiday tomorrow.”",
     "answers": [
       [
         "about"
@@ -10,7 +10,7 @@
   },
   {
     "id": 2,
-    "sentence": "“I’m very angry {{0}} you.” “Why? What have I done?”",
+    "sentence": "“I’m very angry {{0}} you.”\n“Why? What have I done?”",
     "answers": [
       [
         "with"
@@ -118,7 +118,7 @@
   },
   {
     "id": 14,
-    "sentence": "“I told her I thought she was stupid.” “That wasn’t very kind {{0}} you.”",
+    "sentence": "“I told her I thought she was stupid.”\n“That wasn’t very kind {{0}} you.”",
     "answers": [
       [
         "of"
@@ -154,7 +154,7 @@
   },
   {
     "id": 18,
-    "sentence": "“The train leaves at 10.00.” “Are you sure {{0}} that?”",
+    "sentence": "“The train leaves at 10.00.”\n“Are you sure {{0}} that?”",
     "answers": [
       [
         "about"
@@ -181,7 +181,7 @@
   },
   {
     "id": 21,
-    "sentence": "Are you fond {{0}} sport? “Not really. I’m not very keen {{1}} it.”",
+    "sentence": "“Are you fond {{0}} sport?”\n“Not really. I’m not very keen {{1}} it.”",
     "answers": [
       [
         "of"
@@ -220,7 +220,7 @@
   },
   {
     "id": 25,
-    "sentence": "Ask {{0}}your sister. She’ll know.",
+    "sentence": "Ask {{0}} your sister. She’ll know.",
     "answers": [
       []
     ]
@@ -272,7 +272,7 @@
   },
   {
     "id": 31,
-    "sentence": "We enjoyed {{0}}the party.",
+    "sentence": "We enjoyed {{0}} the party.",
     "answers": [
       []
     ]
@@ -306,14 +306,14 @@
   },
   {
     "id": 35,
-    "sentence": "He married {{0}}his aerobics teacher.",
+    "sentence": "He married {{0}} his aerobics teacher.",
     "answers": [
       []
     ]
   },
   {
     "id": 36,
-    "sentence": "I met {{0}}some old friends last night.",
+    "sentence": "I met {{0}} some old friends last night.",
     "answers": [
       []
     ]
@@ -329,7 +329,7 @@
   },
   {
     "id": 38,
-    "sentence": "Phone/call/ring {{0}}me tonight.",
+    "sentence": "Phone/call/ring {{0}} me tonight.",
     "answers": [
       []
     ]
@@ -345,7 +345,7 @@
   },
   {
     "id": 40,
-    "sentence": "Tell {{0}}your wife what happened.",
+    "sentence": "Tell {{0}} your wife what happened.",
     "answers": [
       []
     ]
